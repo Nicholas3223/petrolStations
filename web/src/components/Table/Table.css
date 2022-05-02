@@ -1,0 +1,12 @@
+.tableParent {
+  border-collapse: collapse;
+  width: 60%;
+}
+
+.tableHeader__rowCell {
+  border: 1px solid black;
+}
+
+.tableBody__rowCell {
+  border: 1px solid black;
+}

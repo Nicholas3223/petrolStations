@@ -1,0 +1,8 @@
+.singleStationTable__parent {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+.singleStationTableBody__rowCell {
+  border: 1px solid black;
+}
