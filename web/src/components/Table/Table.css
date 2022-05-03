@@ -4,7 +4,7 @@
 }
 
 .tableHeader__rowCell {
-  border: 1px solid black;
+  border: 1px solid #8c8c8c;
 }
 
 .tableBody__row:hover {
@@ -12,6 +12,6 @@
 }
 
 .tableBody__rowCell {
-  border: 1px solid black;
+  border: 1px solid #8c8c8c;
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './containers/App/App';
@@ -7,7 +7,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 

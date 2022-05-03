@@ -9,7 +9,7 @@ const Station = () => {
 
   let { id } = useParams();
 
-  const {data, fetchError} = useFetch(`http://localhost:8080/api/stations/${id}`, {});
+  const { data, fetchError } = useFetch(`http://localhost:8080/api/stations/${id}`, {});
 
   return(
     <div className='stationContainer'>

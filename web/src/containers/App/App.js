@@ -8,7 +8,7 @@ const tableHeaders = ["Name", "Margin", "Profit", "Volume"];
 
 function App() {
 
-  const {data} = useFetch('http://localhost:8080/api/stations/', []);
+  const { data } = useFetch('http://localhost:8080/api/stations/', []);
 
   return (
     <div className="App">
