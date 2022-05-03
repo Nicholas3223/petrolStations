@@ -19,7 +19,7 @@ const Table = ({ data, headers }) => {
       <tbody>
         {data?.map((station) => {
           return (
-            <tr onClick={() => handleClick(station.id)} key={station.id}>
+            <tr className="tableBody__row" onClick={() => handleClick(station.id)} key={station.id}>
               <td className='tableBody__rowCell'>{station.name}</td>
               <td className='tableBody__rowCell'>{station.metrics.margin}</td>
               <td className='tableBody__rowCell'>{station.metrics.profit}</td>

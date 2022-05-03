@@ -4,18 +4,18 @@ import './SingleStationTable.css';
 const SingleStationTable = ({station}) => {
   return(
     <table className='singleStationTable__parent'>
+       <tbody>
       {
-        Object.entries(station.metrics).map(([key, value]) => {
+        Object.entries(station.metrics).map(([key, value], i) => {
           return (
-            <tbody>
-              <tr>
-                <td className='singleStationTableBody__rowCell'>{key}</td>
-                <td className='singleStationTableBody__rowCell'>{value}</td>
-              </tr>
-            </tbody>
+            <tr key={i}>
+              <td className='singleStationTableBody__rowCell'>{key}</td>
+              <td className='singleStationTableBody__rowCell'>{value}</td>
+            </tr>
           )
         })
       }
+      </tbody>
     </table>
   );
 };

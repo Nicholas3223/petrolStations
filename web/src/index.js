@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Station from './Station';
+import App from './containers/App/App';
+import Station from './containers/Station/Station';
 import {
   BrowserRouter as Router,
   Routes,

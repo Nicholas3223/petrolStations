@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import Table from './components/Table/Table';
+import React from 'react';
 
-import useFetch from './customHooks/useFetch';
+import Table from '../../components/Table/Table';
+import useFetch from '../../customHooks/useFetch';
 import './App.css';
 
 const tableHeaders = ["Name", "Margin", "Profit", "Volume"];
 
 function App() {
 
-  const [data] = useFetch('http://localhost:8080/api/stations/', []);
+  const {data} = useFetch('http://localhost:8080/api/stations/', []);
 
   return (
     <div className="App">
