@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import SingleStationTable from '../../components/SingleStationTable/SingleStationTable';
-import useFetch from '../../customHooks/useFetch';
+import { fetchIndividualStation } from '../../actions/stationActions';
 import './Station.css';
 
-const Station = () => {
+const Station = (props) => {
+  const dispatch = useDispatch();
+  const { individualStation, errorFetching } = useSelector((state) => state.stations);
 
   let { id } = useParams();
 
-  const { data, fetchError } = useFetch(`http://localhost:8080/api/stations/${id}`, {});
+  useEffect(() => {
+    dispatch(fetchIndividualStation(id));
+  }, [])
 
   return(
     <div className='stationContainer'>
-      <h2>{data?.name} Station</h2>
-      {Object.keys(data).length && !fetchError
+      <h2>{individualStation?.name} Station</h2>
+      {Object.keys(individualStation).length && !errorFetching
       ?
         <SingleStationTable
-          station={data}
+          station={individualStation}
         />
       :
-        <h3>{fetchError}</h3>
+        <h3>{errorFetching}</h3>
       }
     </div>
   )
