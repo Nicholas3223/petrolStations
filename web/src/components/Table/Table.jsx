@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Table.css';
 
-const Table = ({ data, headers }) => {
-  const navigate = useNavigate();
+const Table = ({ data, headers, navigate }) => {
 
   const handleClick = useCallback((id) => {
     navigate(`station/${id}`);

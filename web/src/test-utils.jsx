@@ -15,7 +15,6 @@ function render(
   function Wrapper({ children }) {
     return <Provider store={store}>{children}</Provider>
   }
-  console.log('rtlRender', rtlRender)
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
 };
 
