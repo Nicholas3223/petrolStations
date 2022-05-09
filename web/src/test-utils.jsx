@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { render as rtlRender } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
@@ -12,10 +12,10 @@ function render(
     ...renderOptions
   } = {}
 ) {
-  // function Wrapper({ children }) {
-  //   return <Provider store={store}>{children}</Provider>
-  // }
-  return rtlRender(<Provider store={store}>ui</Provider>)
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>
+  }
+  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
 };
 
 // re-export everything

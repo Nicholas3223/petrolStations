@@ -3,25 +3,11 @@
  */
 import React from 'react';
 import * as redux from 'react-redux'
-import * as actions from '../../../actions/stationActions';
-import configureMockStore from 'redux-mock-store';
 import {BrowserRouter as Router} from 'react-router-dom';
-import thunk from 'redux-thunk';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import App from '../App';
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
-
-const initialState = {
-  stations: {
-  stationsList: [],
-  individualStation: {},
-  errorFetching: "",
-  },
-};
 
 const fetchStationsMock = {
   type: 'FETCH_STATIONS',
@@ -78,16 +64,13 @@ const mockAppState = {
   },
 };
 
-const store = mockStore(initialState);
-
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
   useSelector: jest.fn().mockImplementation(() => mockAppState),
   useDispatch: () => mockDispatch,
 }));
 
-test('renders the App component with table populated', async() => {
-  store.dispatch(actions.fetchStations('www.url.com'));
+test('renders the Station component with table populated', async() => {
   jest
     .spyOn(redux, 'useSelector')
     .mockImplementation((callback) => callback(mockAppState))
@@ -96,7 +79,8 @@ test('renders the App component with table populated', async() => {
       <App/>
     </Router>
   );
-  console.log('store.getState', store.getState());
-  const rowNode = screen.getByText(/Anfield/i);
-  expect(rowNode).toBeVisible();
-})
+  const rowNodeName = screen.getByText(/Anfield/i);
+  expect(rowNodeName).toBeVisible();
+  const rowNodeVolume = screen.getByText(/986/i);
+  expect(rowNodeVolume).toBeVisible();
+});

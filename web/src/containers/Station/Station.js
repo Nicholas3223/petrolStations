@@ -6,7 +6,7 @@ import SingleStationTable from '../../components/SingleStationTable/SingleStatio
 import { fetchIndividualStation } from '../../actions/stationActions';
 import './Station.css';
 
-const Station = (props) => {
+const Station = () => {
   const dispatch = useDispatch();
   const { individualStation, errorFetching } = useSelector((state) => state.stations);
 
@@ -14,7 +14,7 @@ const Station = (props) => {
 
   useEffect(() => {
     dispatch(fetchIndividualStation(id));
-  }, [])
+  }, []);
 
   return(
     <div className='stationContainer'>

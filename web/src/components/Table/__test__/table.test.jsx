@@ -1,9 +1,13 @@
+/**
+ * @jest-environment jsdom
+ */
 import { Provider } from 'react-redux';
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import '@testing-library/jest-dom';
 
 import Table from '../Table';
 
