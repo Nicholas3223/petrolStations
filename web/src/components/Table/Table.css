@@ -5,6 +5,7 @@
 
 .tableHeader__rowCell {
   border: 1px solid #8c8c8c;
+  cursor: pointer;
 }
 
 .tableBody__row:hover {

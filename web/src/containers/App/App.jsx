@@ -6,8 +6,6 @@ import Table from '../../components/Table/Table';
 import { fetchStations } from '../../actions/stationActions';
 import './App.css';
 
-const tableHeaders = ['Name', 'Margin', 'Profit', 'Volume'];
-
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,7 +20,6 @@ function App() {
       <h2>Petrol Stations</h2>
       <Table
         data={stationsList}
-        headers={tableHeaders}
         navigate={navigate}
       />
     </div>
