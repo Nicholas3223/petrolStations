@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SingleStationTable.css';
 
-const SingleStationTable = ({station}) => {
+const SingleStationTable = ({ station }) => {
   return(
     <table className='singleStationTable__parent'>
        <tbody>
@@ -19,5 +20,17 @@ const SingleStationTable = ({station}) => {
     </table>
   );
 };
+
+SingleStationTable.propTypes = {
+  station: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    metrics: PropTypes.shape({
+      volume: PropTypes.number.isRequired,
+      margin: PropTypes.number.isRequired,
+      profit: PropTypes.number.isRequired,
+    })
+  })
+}
 
 export default SingleStationTable;

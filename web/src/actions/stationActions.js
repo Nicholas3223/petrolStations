@@ -11,7 +11,7 @@ export const fetchStations = () => async(dispatch) => {
   } catch (err) {
     dispatch({
       type: FETCH_ERROR,
-      payload: err
+      payload: err,
     })
   }
 };
@@ -24,10 +24,9 @@ export const fetchIndividualStation = (id) => async(dispatch) => {
       payload: fetchedData.data,
     });
   } catch(err) {
-    console.log('err', err)
     dispatch({
       type: FETCH_ERROR,
-      payload: err
+      payload: err,
     })
   }
-}
+};

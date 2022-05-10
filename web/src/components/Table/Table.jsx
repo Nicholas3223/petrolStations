@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './Table.css';
 
 const Table = ({ data, headers, navigate }) => {
@@ -28,6 +29,20 @@ const Table = ({ data, headers, navigate }) => {
       </tbody>
     </table>
   )
+}
+
+Table.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    metrics: PropTypes.shape({
+      volume: PropTypes.number.isRequired,
+      margin: PropTypes.number.isRequired,
+      profit: PropTypes.number.isRequired,
+    })
+  })),
+  headers: PropTypes.arrayOf(PropTypes.string),
+  navigate: PropTypes.func.isRequired,
 }
 
 export default Table

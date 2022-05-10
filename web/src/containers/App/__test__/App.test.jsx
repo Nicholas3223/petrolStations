@@ -65,6 +65,7 @@ const mockAppState = {
 };
 
 const mockDispatch = jest.fn();
+// TODO try to undo the jest.mock of react-redux at the end of the test
 jest.mock('react-redux', () => ({
   useSelector: jest.fn().mockImplementation(() => mockAppState),
   useDispatch: () => mockDispatch,

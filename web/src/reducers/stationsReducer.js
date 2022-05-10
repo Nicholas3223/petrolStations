@@ -17,6 +17,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         individualStation: action.payload,
+        errorFetching: "",
       }
     case FETCH_ERROR:
       return {

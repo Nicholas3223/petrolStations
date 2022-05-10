@@ -62,6 +62,7 @@ test('Handles FETCH_INDIVIDUAL_STATION', () => {
     })
   ).toEqual({
     individualStation: individualStationMockData,
+    errorFetching: "",
   })
 });
 
