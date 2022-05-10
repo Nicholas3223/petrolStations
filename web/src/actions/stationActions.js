@@ -1,5 +1,5 @@
-import axios from "axios";
-import { FETCH_STATIONS, FETCH_INDIVIDUAL_STATION, FETCH_ERROR } from "../actions/types";
+import axios from 'axios';
+import { FETCH_STATIONS, FETCH_INDIVIDUAL_STATION, FETCH_ERROR } from '../actions/types';
 
 export const fetchStations = () => async(dispatch) => {
   try {

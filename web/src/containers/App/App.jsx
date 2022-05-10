@@ -6,7 +6,7 @@ import Table from '../../components/Table/Table';
 import { fetchStations } from '../../actions/stationActions';
 import './App.css';
 
-const tableHeaders = ["Name", "Margin", "Profit", "Volume"];
+const tableHeaders = ['Name', 'Margin', 'Profit', 'Volume'];
 
 function App() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchStations());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

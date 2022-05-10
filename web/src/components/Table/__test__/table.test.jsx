@@ -25,7 +25,7 @@ const initialState = {
 const stationsMockData = [
   {
     id: 1,
-    name: "Anfield",
+    name: 'Anfield',
     metrics: {
       volume: 1526,
       margin: 20.65,
@@ -34,7 +34,7 @@ const stationsMockData = [
   },
   {
     id: 2,
-    name: "Vicarage Road",
+    name: 'Vicarage Road',
     metrics: {
       volume: 986,
       margin: 17.99,
@@ -43,7 +43,7 @@ const stationsMockData = [
   },
 ];
 
-const headers = ["Name", "Margin", "Profit", "Volume"];
+const headers = ['Name', 'Margin', 'Profit', 'Volume'];
 
 const store = mockStore(initialState);
 

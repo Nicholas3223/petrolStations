@@ -30,7 +30,7 @@ describe('async actions', () => {
     const stationsMockData = [
       {
         id: 1,
-        name: "Anfield",
+        name: 'Anfield',
         metrics: {
           volume: 1526,
           margin: 20.65,
@@ -39,7 +39,7 @@ describe('async actions', () => {
       },
       {
         id: 2,
-        name: "Vicarage Road",
+        name: 'Vicarage Road',
         metrics: {
           volume: 986,
           margin: 17.99,
@@ -61,12 +61,10 @@ describe('async actions', () => {
       });
   });
 
-  // TODO check if this fails on another project with the moxios reject
-
   test('returns data after correct request from FETCH_INDIVIDUAL_STATION', () => {
     const individualStationMockData = {
       id: 3,
-      name: "Stamford Bridge",
+      name: 'Stamford Bridge',
       metrics: {
         volume: 2360,
         margin: 25.88,

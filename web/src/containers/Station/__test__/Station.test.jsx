@@ -13,7 +13,7 @@
    type: 'FETCH_INDIVIDUAL_STATION',
    payload: {
     id: 3,
-    name: "Stamford Bridge",
+    name: 'Stamford Bridge',
     metrics: {
       volume: 2360,
       margin: 25.88,
@@ -31,7 +31,7 @@
      stationsList: [
        {
          id: 1,
-         name: "Anfield",
+         name: 'Anfield',
          metrics: {
            volume: 1526,
            margin: 20.65,
@@ -40,7 +40,7 @@
        },
        {
          id: 2,
-         name: "Vicarage Road",
+         name: 'Vicarage Road',
          metrics: {
            volume: 986,
            margin: 17.99,
@@ -50,24 +50,32 @@
      ],
      individualStation: {
       id: 3,
-      name: "Stamford Bridge",
+      name: 'Stamford Bridge',
       metrics: {
         volume: 2360,
         margin: 25.88,
         profit: 611
       }
     },
-     errorFetching: "",
+     errorFetching: '',
    },
  };
+
+ const mockAppStateError = {
+  stations: {
+    stationsList: [],
+    individualStation: {},
+    errorFetching: 'TypeError',
+  },
+};
  
  const mockDispatch = jest.fn();
  jest.mock('react-redux', () => ({
-   useSelector: jest.fn().mockImplementation(() => mockAppState),
+   useSelector: jest.fn().mockImplementation(() => {}),
    useDispatch: () => mockDispatch,
  }));
  
- test('renders the App component with table populated', async() => {
+ test('renders the Station component with table populated', async() => {
    jest
      .spyOn(redux, 'useSelector')
      .mockImplementation((callback) => callback(mockAppState))
@@ -76,8 +84,23 @@
        <Station/>
      </Router>
    );
+   const tableComponent = screen.getByTestId('singleStationTable__container');
+   expect(tableComponent).toBeVisible();
    const rowNodeName = screen.getByText(/Stamford Bridge/i);
    expect(rowNodeName).toBeVisible();
    const rowNodeVolume = screen.getByText(/2360/i);
    expect(rowNodeVolume).toBeVisible();
  });
+
+ test('renders the Error message when errorFetching is populated', () => {
+  jest
+    .spyOn(redux, 'useSelector')
+    .mockImplementation((callback) => callback(mockAppStateError))
+  render(
+    <Router>
+      <Station/>
+    </Router>
+  );
+  const errorMessage = screen.getByText(/TypeError/i);
+  expect(errorMessage).toBeVisible();
+});

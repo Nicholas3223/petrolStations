@@ -17,7 +17,7 @@ const Station = () => {
   }, []);
 
   return(
-    <div className='stationContainer'>
+    <div className="stationContainer">
       <h2>{individualStation?.name} Station</h2>
       {Object.keys(individualStation).length && !errorFetching
       ?

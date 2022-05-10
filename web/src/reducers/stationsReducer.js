@@ -3,7 +3,7 @@ import { FETCH_STATIONS, FETCH_INDIVIDUAL_STATION, FETCH_ERROR } from "../action
 const initialState = {
   stationsList: [],
   individualStation: {},
-  errorFetching: "",
+  errorFetching: '',
 };
 
 export default function(state = initialState, action) {
@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         individualStation: action.payload,
-        errorFetching: "",
+        errorFetching: '',
       }
     case FETCH_ERROR:
       return {

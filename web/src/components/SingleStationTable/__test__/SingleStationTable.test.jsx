@@ -24,7 +24,7 @@ const initialState = {
 
 const individualStationMockData = {
   id: 3,
-  name: "Stamford Bridge",
+  name: 'Stamford Bridge',
   metrics: {
     volume: 2360,
     margin: 25.88,

@@ -10,11 +10,11 @@ import '@testing-library/jest-dom';
 import App from '../App';
 
 const fetchStationsMock = {
-  type: 'FETCH_STATIONS',
+  type: "FETCH_STATIONS",
   payload: [
     {
       id: 1,
-      name: "Anfield",
+      name: 'Anfield',
       metrics: {
         volume: 1526,
         margin: 20.65,
@@ -23,7 +23,7 @@ const fetchStationsMock = {
     },
     {
       id: 2,
-      name: "Vicarage Road",
+      name: 'Vicarage Road',
       metrics: {
         volume: 986,
         margin: 17.99,
@@ -42,7 +42,7 @@ const mockAppState = {
     stationsList: [
       {
         id: 1,
-        name: "Anfield",
+        name: 'Anfield',
         metrics: {
           volume: 1526,
           margin: 20.65,
@@ -51,7 +51,7 @@ const mockAppState = {
       },
       {
         id: 2,
-        name: "Vicarage Road",
+        name: 'Vicarage Road',
         metrics: {
           volume: 986,
           margin: 17.99,
@@ -60,26 +60,27 @@ const mockAppState = {
       },
     ],
     individualStation: {},
-    errorFetching: "",
+    errorFetching: '',
   },
 };
 
 const mockDispatch = jest.fn();
-// TODO try to undo the jest.mock of react-redux at the end of the test
 jest.mock('react-redux', () => ({
-  useSelector: jest.fn().mockImplementation(() => mockAppState),
+  useSelector: jest.fn().mockImplementation(() => {}),
   useDispatch: () => mockDispatch,
 }));
 
-test('renders the Station component with table populated', async() => {
+test('renders the App component with table populated', () => {
   jest
     .spyOn(redux, 'useSelector')
-    .mockImplementation((callback) => callback(mockAppState))
+    .mockImplementation((callback) => callback(mockAppState));
   render(
     <Router>
       <App/>
     </Router>
   );
+  const tableComponent = screen.getByTestId('tableComponent__container');
+  expect(tableComponent).toBeVisible();
   const rowNodeName = screen.getByText(/Anfield/i);
   expect(rowNodeName).toBeVisible();
   const rowNodeVolume = screen.getByText(/986/i);
