@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Train Stations</h2>
+      <h2>Petrol Stations</h2>
       <Table
         data={stationsList}
         headers={tableHeaders}
