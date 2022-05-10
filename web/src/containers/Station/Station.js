@@ -18,12 +18,14 @@ const Station = () => {
 
   return(
     <div className="stationContainer">
-      <h2>{individualStation?.name} Station</h2>
       {Object.keys(individualStation).length && !errorFetching
       ?
+      <>
+      <h2>{individualStation?.name}</h2>
         <SingleStationTable
           station={individualStation}
         />
+      </>
       :
         <h3>{errorFetching}</h3>
       }
