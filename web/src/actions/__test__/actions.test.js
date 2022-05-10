@@ -2,7 +2,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import expect from 'expect';
 import moxios from 'moxios';
-import axios, { Axios } from 'axios';
 
 import * as actions from '../stationActions';
 
@@ -61,6 +60,21 @@ describe('async actions', () => {
       });
   });
 
+  test('returns error after failed axios.get request for stations', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: 'TypeError: There was an error fetching your data'
+      });
+    });
+    store.dispatch(actions.fetchStations())
+    .then(() => {
+      const newState = store.getState();
+      expect(newState.errorFetching).toBe('TypeError: There was an error fetching your data')
+    });
+  });
+
   test('returns data after correct request from FETCH_INDIVIDUAL_STATION', () => {
     const individualStationMockData = {
       id: 3,
@@ -83,5 +97,20 @@ describe('async actions', () => {
         const newState = store.getState();
         expect(newState.stationsList).toBe(individualStationMockData)
       });
+  });
+
+  test('returns error after failed axios.get request for individual station', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: 'TypeError: There was an error fetching your station data'
+      });
+    });
+    store.dispatch(actions.fetchIndividualStation())
+    .then(() => {
+      const newState = store.getState();
+      expect(newState.errorFetching).toBe('TypeError: There was an error fetching your station data')
+    });
   });
 });
