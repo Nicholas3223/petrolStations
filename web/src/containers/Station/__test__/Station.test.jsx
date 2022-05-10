@@ -75,7 +75,7 @@
    useDispatch: () => mockDispatch,
  }));
  
- test('renders the Station component with table populated', async() => {
+ test('renders the Station component with table populated', () => {
    jest
      .spyOn(redux, 'useSelector')
      .mockImplementation((callback) => callback(mockAppState))
