@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import handleSorting from './utils/handleSorting';
 import './Table.css';
 
 const Table = ({ data, navigate }) => {
@@ -9,30 +10,7 @@ const Table = ({ data, navigate }) => {
 
   const handleClick = useCallback((id) => () => {
     navigate(`station/${id}`);
-  }, []);
-
-  const handleSorting = (column, type, sortData) => {
-    if(order === 'asc') {
-      const sorted = [...sortData].sort((a, b) => {
-        if(type === 'number') {
-          return  a.metrics[column] - b.metrics[column];
-        }
-        return a[column] > b[column] ? 1 : -1;
-      })
-      setTableData(sorted);
-      setOrder('dsc');
-    }
-    if(order === 'dsc') {
-      const sorted = [...sortData].sort((a, b) => {
-        if(type === 'number'){
-          return  b.metrics[column] - a.metrics[column]
-        }
-        return a[column] < b[column] ? 1 : -1;
-      })
-      setTableData(sorted);
-      setOrder('asc');
-    }
-  };
+  }, [navigate]);
 
   const populatedData = tableData.length ? tableData : data;
 
@@ -40,10 +18,30 @@ const Table = ({ data, navigate }) => {
     <table className="tableParent" data-testid="tableComponent__container">
       <thead>
         <tr>
-          <th className="tableHeader__rowCell" onClick={() => handleSorting('name', 'string', populatedData)}>Name</th>
-          <th className="tableHeader__rowCell" onClick={() => handleSorting('margin', 'number', populatedData)}>Margin</th>
-          <th className="tableHeader__rowCell" onClick={() => handleSorting('profit', 'number', populatedData)}>Profit</th>
-          <th className="tableHeader__rowCell" onClick={() => handleSorting('volume', 'number', populatedData)}>Volume</th>
+          <th
+            className="tableHeader__rowCell"
+            onClick={() => handleSorting('name', 'string', populatedData, order, setTableData, setOrder)}
+          >
+            Name
+          </th>
+          <th
+            className="tableHeader__rowCell"
+            onClick={() => handleSorting('margin', 'number', populatedData, order, setTableData, setOrder)}
+          >
+            Margin
+          </th>
+          <th
+            className="tableHeader__rowCell"
+            onClick={() => handleSorting('profit', 'number', populatedData, order, setTableData, setOrder)}
+          >
+            Profit
+          </th>
+          <th
+            className="tableHeader__rowCell"
+            onClick={() => handleSorting('volume', 'number', populatedData, order, setTableData, setOrder)}
+          >
+            Volume
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -75,4 +73,4 @@ Table.propTypes = {
   navigate: PropTypes.func.isRequired,
 }
 
-export default Table
+export default Table;
